@@ -9,6 +9,33 @@
 
 easily load test data from files
 
+### Introduction
+
+This was created to save the tediousness of working with sets of data for
+testing inside the test files.
+
+### Installing
+
+```sh
+pip install pytest-filedata
+```
+
+### Using
+
+Add this to your `conftest.py` file:
+
+```python
+pytest.setup_filedata(os.path.dirname(__file__))
+
+
+def pytest_generate_tests(metafunc):
+    for fixture in metafunc.fixturenames:
+        if fixture.startswith('data_'):
+            data = pytest.get_filedata(fixture)
+            metafunc.parametrize(fixture, data.values(), ids=data.keys())
+```
+
+
 ### License
 
 Copyright 2016 20C, LLC

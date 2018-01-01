@@ -100,7 +100,7 @@ def get_filedata(name):
     return data
 
 
-class RequestData(object):
+class RequestsData(object):
     """
     class to use test data from requests
     """
@@ -145,6 +145,6 @@ def pytest_namespace():
     """Register pytest plugin."""
     return dict(
         get_filedata=get_filedata,
-        RequestData=RequestData,
+        RequestsData=RequestsData,
         setup_filedata=setup_filedata,
         )

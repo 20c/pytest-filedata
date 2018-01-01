@@ -3,6 +3,9 @@
 import requests
 import pytest
 
-@pytest.RequestData("req")
-def test_request():
-    pass
+
+@pytest.RequestsData("req")
+def test_requests(data_json):
+    res = requests.get('https://example.com/test0')
+    assert res.status_code == 200
+    assert data_json.expected == res.json()
