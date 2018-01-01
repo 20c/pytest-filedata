@@ -71,7 +71,7 @@ def get_test_files(dirname):
     gets a list of files in directory specified by name
     """
     if not os.path.isdir(dirname):
-        raise ValueError("data directory '{}' does not exist".format(dirname))
+        return []
     path = dirname + "/{}"
     return map(path.format, sorted(os.listdir(dirname)))
 
@@ -79,6 +79,9 @@ def get_test_files(dirname):
 def get_filedata(name):
     data = collections.OrderedDict()
     dirname = os.path.join(test_dir, *name.split('_'))
+
+    if not os.path.isdir(dirname):
+        raise ValueError("data directory '{}' does not exist".format(dirname))
 
     for each in get_test_files(dirname):
         fname = os.path.basename(each)
@@ -113,12 +116,20 @@ class RequestsData(object):
     def callback(self, request, context):
         path = urlparse.urlparse(request.url).path
         path = os.path.join(test_dir, 'data', self.prefix, path.lstrip('/'))
+
         files = get_test_files(path)
 
-        if len(files) != 1:
+        if len(files) > 1:
             raise NotImplementedError("Currently there must be only one response file")
 
-        fname = files[0]
+        if len(files) == 0:
+            # dir not found, check for file.input
+            fname = path + '.input'
+            if not os.path.exists(fname):
+                raise ValueError("failed to find data for {}".format(path))
+
+        else:
+            fname = files[0]
 
         try:
             # file extension is status code
