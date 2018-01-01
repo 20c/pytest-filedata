@@ -114,13 +114,18 @@ class RequestsData(object):
         path = urlparse.urlparse(request.url).path
         path = os.path.join(test_dir, 'data', self.prefix, path.lstrip('/'))
         files = get_test_files(path)
+
         if len(files) != 1:
             raise NotImplementedError("Currently there must be only one response file")
 
         fname = files[0]
 
-        # file extension is status code
-        context.status_code = int(os.path.splitext(fname)[1].lstrip('.'))
+        try:
+            # file extension is status code
+            context.status_code = int(os.path.splitext(fname)[1].lstrip('.'))
+
+        except ValueError:
+            context.status_code = 200
 
         with open(fname) as fobj:
             return fobj.read()
