@@ -54,10 +54,11 @@ def loads(data):
 
 
 class FileTestData(object):
-    def __init__(self, inp=None, exp=None, filename=None):
+    def __init__(self, inp=None, exp=None, name=None, path=None):
         self.input = inp
         self.expected = exp
-        self.filename = filename
+        self.name = name
+        self.path = path
 
     def dumps(self, data):
         return dumps(data)
@@ -89,7 +90,7 @@ def get_filedata(name):
             continue
 
         test_name, ext = os.path.splitext(fname)
-        data.setdefault(test_name, FileTestData(filename=each))
+        data.setdefault(test_name, FileTestData(name=test_name, path=dirname))
 
         # could setattr
         attr = ext[1:]
