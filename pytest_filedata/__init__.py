@@ -108,11 +108,11 @@ class RequestsData(object):
     """
     class to use test data from requests
     """
-    def __init__(self, prefix):
+    def __init__(self, prefix, real_http=True):
         self.prefix = prefix
         adapter = requests_mock.Adapter()
         adapter.register_uri(requests_mock.ANY, requests_mock.ANY, text=self.callback)
-        self.mocker = requests_mock.Mocker(adapter=adapter)
+        self.mocker = requests_mock.Mocker(adapter=adapter, real_http=real_http)
 
     def callback(self, request, context):
         path = urlparse.urlparse(request.url).path
