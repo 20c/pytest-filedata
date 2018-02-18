@@ -7,8 +7,6 @@ python:
 branches:
   except:
     - gh-pages
-env:
-  - TOX_ENV=py27
 matrix:
   fast_finish: true
 before_install:
