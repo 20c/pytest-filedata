@@ -2,6 +2,7 @@
 # pytest filedata
 
 [![PyPI](https://img.shields.io/pypi/v/pytest-filedata.svg?maxAge=3600)](https://pypi.python.org/pypi/pytest-filedata)
+[![PyPI](https://img.shields.io/pypi/pyversions/pytest-filedata.svg?maxAge=3600)](https://pypi.python.org/pypi/pytest-filedata)
 [![Travis CI](https://img.shields.io/travis/20c/pytest-filedata.svg?maxAge=3600)](https://travis-ci.org/20c/pytest-filedata)
 [![Code Health](https://landscape.io/github/20c/pytest-filedata/master/landscape.svg?style=flat)](https://landscape.io/github/20c/pytest-filedata/master)
 [![Codecov](https://img.shields.io/codecov/c/github/20c/pytest-filedata/master.svg?maxAge=3600)](https://codecov.io/github/20c/pytest-filedata)

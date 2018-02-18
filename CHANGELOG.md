@@ -10,10 +10,11 @@
 ### Security
 
 
-## [Unreleased]
+## [0.2.0]
 ### Added
 - RequestsData can use .input extensions
 - add real_http option
+- py3 support
 
 ### Changed
 - requests status code is optional, defaults to 200

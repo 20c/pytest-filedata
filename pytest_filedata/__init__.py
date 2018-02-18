@@ -1,9 +1,13 @@
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import map
+from builtins import object
 import collections
 from datetime import datetime
 import json
 import os
-import urlparse
+import urllib.parse
 
 import requests_mock
 import decorator
@@ -74,7 +78,7 @@ def get_test_files(dirname):
     if not os.path.isdir(dirname):
         return []
     path = dirname + "/{}"
-    return map(path.format, sorted(os.listdir(dirname)))
+    return list(map(path.format, sorted(os.listdir(dirname))))
 
 
 def get_filedata(name):
@@ -115,7 +119,7 @@ class RequestsData(object):
         self.mocker = requests_mock.Mocker(adapter=adapter, real_http=real_http)
 
     def callback(self, request, context):
-        path = urlparse.urlparse(request.url).path
+        path = urllib.parse.urlparse(request.url).path
         path = os.path.join(test_dir, 'data', self.prefix, path.lstrip('/'))
 
         files = get_test_files(path)
