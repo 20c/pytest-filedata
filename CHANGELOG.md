@@ -4,6 +4,8 @@
 ## [Unreleased]
 ### Added
 ### Fixed
+- ignore directories
+
 ### Changed
 ### Deprecated
 ### Removed

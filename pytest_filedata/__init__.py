@@ -89,6 +89,9 @@ def get_filedata(name):
         raise ValueError("data directory '{}' does not exist".format(dirname))
 
     for each in get_test_files(dirname):
+        if os.path.isdir(each):
+            continue
+
         fname = os.path.basename(each)
         if fname.startswith('.'):
             continue
