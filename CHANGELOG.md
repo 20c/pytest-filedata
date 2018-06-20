@@ -4,12 +4,15 @@
 ## [Unreleased]
 ### Added
 ### Fixed
-- ignore directories
-
 ### Changed
 ### Deprecated
 ### Removed
 ### Security
+
+
+## [0.3.0]
+### Changed
+- ignore directories
 
 
 ## [0.2.0]
