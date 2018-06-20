@@ -58,6 +58,7 @@ def loads(data):
 
 
 class FileTestData(object):
+    """ object to hold file test data """
     def __init__(self, inp=None, exp=None, name=None, path=None):
         self.input = inp
         self.expected = exp
@@ -65,9 +66,11 @@ class FileTestData(object):
         self.path = path
 
     def dumps(self, data):
+        """ dump data in configured output method """
         return dumps(data)
 
     def loads(self, data):
+        """ load data in configured output method """
         return loads(data)
 
 
