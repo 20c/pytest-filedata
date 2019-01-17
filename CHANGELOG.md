@@ -5,6 +5,8 @@
 ### Added
 ### Fixed
 ### Changed
+- removed pytest_namespace for pytest4
+
 ### Deprecated
 ### Removed
 ### Security

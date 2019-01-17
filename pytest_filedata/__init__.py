@@ -16,7 +16,7 @@ import decorator
 test_dir = None
 
 
-def setup_filedata(base_dir, fixture_prefixes=None):
+def setup(base_dir, fixture_prefixes=None):
     """
     setup filedata with base dir for data
     """
@@ -76,7 +76,7 @@ class FileTestData(object):
 
 def get_test_files(dirname):
     """
-    gets a list of files in directory specified by name
+    Gets a list of files in directory specified by name.
     """
     if not os.path.isdir(dirname):
         return []
@@ -84,7 +84,10 @@ def get_test_files(dirname):
     return list(map(path.format, sorted(os.listdir(dirname))))
 
 
-def get_filedata(name):
+def get_data(name):
+    """
+    Gets data from fixture name.
+    """
     data = collections.OrderedDict()
     dirname = os.path.join(test_dir, *name.split('_'))
 
@@ -166,12 +169,3 @@ class RequestsData(object):
 
     def __exit__(self, typ, value, traceback):
         self.mocker.stop()
-
-
-def pytest_namespace():
-    """Register pytest plugin."""
-    return dict(
-        get_filedata=get_filedata,
-        RequestsData=RequestsData,
-        setup_filedata=setup_filedata,
-        )

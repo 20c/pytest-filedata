@@ -26,13 +26,15 @@ pip install pytest-filedata
 Add this to your `conftest.py` file:
 
 ```python
-pytest.setup_filedata(os.path.dirname(__file__))
+import pytest_filedata
+
+pytest_filedata.setup(os.path.dirname(__file__))
 
 
 def pytest_generate_tests(metafunc):
     for fixture in metafunc.fixturenames:
         if fixture.startswith('data_'):
-            data = pytest.get_filedata(fixture)
+            data = pytest_filedata.get_data(fixture)
             metafunc.parametrize(fixture, list(data.values()), ids=list(data.keys()))
 ```
 
