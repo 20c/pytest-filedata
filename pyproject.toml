@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "{{ project_name }}"
-repository = "{{ project_repo }}"
-version = "{{ version }}"
-description = "{{ project_description }}"
+name = "pytest_filedata"
+repository = "git@github.com:20c/pytest-filedata.git"
+version = "0.4.0"
+description = "easily load data from files"
 authors = [ "20C <code@20c.com>",]
-license = "{{ project_license }}"
+license = "LICENSE.txt"
 classifiers = [
   "Topic :: Software Development", 
   "License :: OSI Approved :: Apache Software License", 
@@ -39,6 +39,11 @@ mkdocs = ">=1.0.0,<2.0.0"
 ctl = "^1.0.0"
 jinja2 = "^2.11.2"
 tmpl = "^0.3.0"
+
+decorator = ">=4, <5"
+future = ">=0.16.0, <1"
+requests-mock = ">=1, <2"
+
 
 [tool.poetry.plugins."markdown.extensions"]
 pymdgen = "pymdgen.md:Extension"
