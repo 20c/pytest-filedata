@@ -4,6 +4,7 @@ repository = "git@github.com:20c/pytest-filedata.git"
 version = "0.4.0"
 description = "easily load data from files"
 authors = [ "20C <code@20c.com>",]
+readme = 'README.md'
 license = "LICENSE.txt"
 classifiers = [
   "Topic :: Software Development", 
