@@ -1,4 +1,0 @@
-include LICENSE
-recursive-include Ctl *.txt
-recursive-include pytest_filedata *.py
-include Ctl/VERSION

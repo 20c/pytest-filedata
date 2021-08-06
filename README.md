@@ -8,7 +8,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/20c/pytest-filedata/master.svg?maxAge=3600)](https://codecov.io/github/20c/pytest-filedata)
 [![Requires.io](https://img.shields.io/requires/github/20c/pytest-filedata.svg?maxAge=3600)](https://requires.io/github/20c/pytest-filedata/requirements)
 
-easily load test data from files
+Easily load test data from files
 
 ### Introduction
 
