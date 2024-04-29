@@ -7,7 +7,7 @@
 [![Code Health](https://landscape.io/github/20c/pytest-filedata/master/landscape.svg?style=flat)](https://landscape.io/github/20c/pytest-filedata/master)
 [![Codecov](https://img.shields.io/codecov/c/github/20c/pytest-filedata/master.svg?maxAge=3600)](https://codecov.io/github/20c/pytest-filedata)
 
-easily load test data from files
+Easily load test data from files
 
 ### Introduction
 
