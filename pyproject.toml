@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytest-filedata"
-version = "0.4.0"
+version = "1.0.0"
 description = "easily load test data from files"
 readme = 'README.md'
 repository = "https://github.com/20c/pytest-filedata"
