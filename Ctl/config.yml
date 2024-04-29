@@ -10,9 +10,4 @@ ctl:
         repo_url: git@github.com:20c/pytest-filedata.git
 
     - name: version
-      type: version
-      config:
-        branch_dev: master
-        branch_release: master
-        repositories:
-          - this_repo
+      type: semver2

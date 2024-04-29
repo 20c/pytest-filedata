@@ -6,7 +6,6 @@
 [![Travis CI](https://img.shields.io/travis/20c/pytest-filedata.svg?maxAge=3600)](https://travis-ci.org/20c/pytest-filedata)
 [![Code Health](https://landscape.io/github/20c/pytest-filedata/master/landscape.svg?style=flat)](https://landscape.io/github/20c/pytest-filedata/master)
 [![Codecov](https://img.shields.io/codecov/c/github/20c/pytest-filedata/master.svg?maxAge=3600)](https://codecov.io/github/20c/pytest-filedata)
-[![Requires.io](https://img.shields.io/requires/github/20c/pytest-filedata.svg?maxAge=3600)](https://requires.io/github/20c/pytest-filedata/requirements)
 
 easily load test data from files
 
@@ -41,10 +40,10 @@ def pytest_generate_tests(metafunc):
 
 ### License
 
-Copyright 2016 20C, LLC
+Copyright 2016-2024 20C, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this softare except in compliance with the License.
+you may not use this software except in compliance with the License.
 You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
