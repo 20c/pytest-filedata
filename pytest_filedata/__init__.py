@@ -1,6 +1,3 @@
-
-from builtins import map
-from builtins import object
 import collections
 from datetime import datetime
 import json
@@ -24,15 +21,14 @@ def setup(base_dir, fixture_prefixes=None):
 
 def json_hook(data):
     date_keys = (
-        'last_change',
-        'last_reboot',
-        'last_reconfiguration',
-        )
+        "last_change",
+        "last_reboot",
+        "last_reconfiguration",
+    )
     for key in date_keys:
         if key in data:
             data[key] = datetime.strptime(data[key], "%Y-%m-%dT%H:%M:%S")
     return data
-
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -55,8 +51,9 @@ def loads(data):
     return json.loads(data, object_hook=json_hook)
 
 
-class FileTestData(object):
-    """ object to hold file test data """
+class FileTestData:
+    """object to hold file test data"""
+
     def __init__(self, inp=None, exp=None, name=None, path=None):
         self.input = inp
         self.expected = exp
@@ -64,11 +61,11 @@ class FileTestData(object):
         self.path = path
 
     def dumps(self, data):
-        """ dump data in configured output method """
+        """dump data in configured output method"""
         return dumps(data)
 
     def loads(self, data):
-        """ load data in configured output method """
+        """load data in configured output method"""
         return loads(data)
 
 
@@ -87,17 +84,17 @@ def get_data(name):
     Gets data from fixture name.
     """
     data = collections.OrderedDict()
-    dirname = os.path.join(test_dir, *name.split('_'))
+    dirname = os.path.join(test_dir, *name.split("_"))
 
     if not os.path.isdir(dirname):
-        raise ValueError("data directory '{}' does not exist".format(dirname))
+        raise ValueError(f"data directory '{dirname}' does not exist")
 
     for each in get_test_files(dirname):
         if os.path.isdir(each):
             continue
 
         fname = os.path.basename(each)
-        if fname.startswith('.'):
+        if fname.startswith("."):
             continue
 
         test_name, ext = os.path.splitext(fname)
@@ -105,7 +102,7 @@ def get_data(name):
 
         # could setattr
         attr = ext[1:]
-        if ext == '.expected':
+        if ext == ".expected":
             with open(each) as fobj:
                 data[test_name].expected = json.load(fobj, object_hook=json_hook)
         else:
@@ -115,10 +112,11 @@ def get_data(name):
     return data
 
 
-class RequestsData(object):
+class RequestsData:
     """
     class to use test data from requests
     """
+
     def __init__(self, prefix, real_http=False):
         self.prefix = prefix
         adapter = requests_mock.Adapter()
@@ -127,7 +125,7 @@ class RequestsData(object):
 
     def callback(self, request, context):
         path = urllib.parse.urlparse(request.url).path
-        path = os.path.join(test_dir, 'data', self.prefix, path.lstrip('/'))
+        path = os.path.join(test_dir, "data", self.prefix, path.lstrip("/"))
 
         files = get_test_files(path)
 
@@ -136,16 +134,16 @@ class RequestsData(object):
 
         if len(files) == 0:
             # dir not found, check for file.input
-            fname = path + '.input'
+            fname = path + ".input"
             if not os.path.exists(fname):
-                raise ValueError("failed to find data for {}".format(path))
+                raise ValueError(f"failed to find data for {path}")
 
         else:
             fname = files[0]
 
         try:
             # file extension is status code
-            context.status_code = int(os.path.splitext(fname)[1].lstrip('.'))
+            context.status_code = int(os.path.splitext(fname)[1].lstrip("."))
 
         except ValueError:
             context.status_code = 200
